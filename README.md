@@ -35,7 +35,7 @@ Navigate to `localhost:4567` in browser.
 
 ## Versioning
 
-I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Shoe-Distributions). 
+I use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/NajibOsman/Shoe-Distributions). 
 
 
 License
