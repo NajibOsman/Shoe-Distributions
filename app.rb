@@ -9,10 +9,11 @@ get("/") do
   erb(:index)
 end
 
-# get('/stores') do
-#   @all_stores = Store.all()
-#   erb(:stores)
-# end
+#routed all stores pages for the brands
+get('/stores') do
+  @all_stores = Store.all()
+  erb(:stores)
+end
 
 # post('/stores/create_new_store') do
 #   name_input = params[:name_input]
