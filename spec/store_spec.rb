@@ -18,13 +18,13 @@ describe(Store) do
       expect(test_store.save).to(eq(false))
     end
   end
-
-  # describe('#capitalize_name') do
-  #   it "capitalizes inputted name" do
-  #     test_store = Store.create({:name => "nike outlet"})
-  #     expect(test_store.name).to(eq('Nike outlet'))
-  #   end
-  # end
+  #the spec for capitalizing the first letter of name
+  describe('#capitalize_name') do
+    it "capitalizes inputted name" do
+      test_store = Store.create({:name => "nike outlet"})
+      expect(test_store.name).to(eq('Nike outlet'))
+    end
+  end
 
   # describe('#uniqueness') do
   #   it "disallows creation of the same Brand name more than once" do
