@@ -3,20 +3,20 @@ class Store < ActiveRecord::Base
   validates :name, presence: true
   # validates_uniqueness_of :name
   before_save(:capitalize_name)
+  #Adds abrand to store for uniqueness
+  def brand_unique_per_store(current_brand)
+    current_store = Store.find(self.id)
+    current_store.brands.each do |brand|
+      if brand.name == current_brand.name
+        errors.add 'brand ' + :name.to_s, 'already exists in this store'
+        return false
+      end
+    end
+  end
 
-  # def brand_unique_per_store(current_brand)
-  #   current_store = Store.find(self.id)
-  #   current_store.brands.each do |brand|
-  #     if brand.name == current_brand.name
-  #       errors.add 'brand ' + :name.to_s, 'already exists in this store'
-  #       return false
-  #     end
-  #   end
-end
+  private
 
-private
-
-def capitalize_name
-  self.name = self.name.capitalize
-end
+  def capitalize_name
+    self.name = self.name.capitalize
+  end
 end

@@ -12,7 +12,7 @@ Installation
 ------------
 
 ```
-$ git clone https://github.com/moringaschool/employees-projects
+$ git clone https://github.com/NajibOsman/Shoe-Distributions
 ```
 
 Install required gems:

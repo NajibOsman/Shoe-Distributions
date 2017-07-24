@@ -25,22 +25,22 @@ describe(Store) do
       expect(test_store.name).to(eq('Nike outlet'))
     end
   end
-
-  # describe('#uniqueness') do
-  #   it "disallows creation of the same Brand name more than once" do
-  #     test_brand = Brand.create({:name => "Nike"})
-  #     test_brand2 = Brand.new({:name => "Nike"})
-  #     expect(test_brand2.save).to(eq(false))
-  #   end
-  # end
-
-  # describe('#brand_unique_per_store') do
-  #   it "disallows adding same brand twice to the same store" do
-  #     test_store = Store.create({:name => "Store"})
-  #     test_brand = Brand.create({:name => "Brand"})
-  #     test_store.brands.push(test_brand)
-  #     expect(test_store.brand_unique_per_store(test_brand)).to(eq(false))
-  #   end
-  # end
+  #It disallows same brand to be added again
+  describe('#uniqueness') do
+    it "disallows creation of the same Brand name more than once" do
+      test_brand = Brand.create({:name => "Nike"})
+      test_brand2 = Brand.new({:name => "Nike"})
+      expect(test_brand2.save).to(eq(false))
+    end
+  end
+  #Disallows adding abrand twice
+  describe('#brand_unique_per_store') do
+    it "disallows adding same brand twice to the same store" do
+      test_store = Store.create({:name => "Store"})
+      test_brand = Brand.create({:name => "Brand"})
+      test_store.brands.push(test_brand)
+      expect(test_store.brand_unique_per_store(test_brand)).to(eq(false))
+    end
+  end
 
 end
