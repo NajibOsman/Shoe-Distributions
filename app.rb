@@ -87,8 +87,9 @@ patch('/brand/:id/update_name') do
   end
 end
 
-# delete('/store/:id/delete') do
-#   @current_store = Store.find(params[:id])
-#   @current_store.destroy
-#   redirect('/stores')
-# end
+#Deleting a store and redirecting bacck to stores
+delete('/store/:id/delete') do
+  @current_store = Store.find(params[:id])
+  @current_store.destroy
+  redirect('/stores')
+end
