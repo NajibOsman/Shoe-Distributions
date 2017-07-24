@@ -72,20 +72,20 @@ post('/brands/create_new_brand') do
   end
 end
 
-# get('/brands/brand/:id') do
-#   @current_brand = Brand.find(params[:id])
-#   erb(:brand)
-# end
-
-# patch('/brand/:id/update_name') do
-#   @current_brand = Brand.find(params[:id])
-#   new_name = params[:new_name]
-#   if @current_brand.update({:name => new_name})
-#     redirect("/brands/brand/#{@current_brand.id}")
-#   else
-#     erb(:error)
-#   end
-# end
+get('/brands/brand/:id') do
+  @current_brand = Brand.find(params[:id])
+  erb(:brand)
+end
+# update an  existing brand
+patch('/brand/:id/update_name') do
+  @current_brand = Brand.find(params[:id])
+  new_name = params[:new_name]
+  if @current_brand.update({:name => new_name})
+    redirect("/brands/brand/#{@current_brand.id}")
+  else
+    erb(:error)
+  end
+end
 
 # delete('/store/:id/delete') do
 #   @current_store = Store.find(params[:id])
