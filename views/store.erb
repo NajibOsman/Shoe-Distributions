@@ -1,1 +1,50 @@
-store.erb
+<h1>Manage Store: <%= @current_store.name %></h1>
+
+<% if @current_store_brands.any? %>
+  <h3><%= @current_store.name %> carries:</h3>
+  <ul>
+    <% @current_store_brands.each do |brand| %>
+    <li><%= brand.name %> products</li>
+    <% end %>
+  </ul>
+<% else %>
+  This store does not carry any brands.
+<% end %>
+
+<br>
+<br>
+<% if @all_brands.any? %>
+<form action="/store/<%= @current_store.id %>/add_brand" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <select class="form-control" name="added_brand" id="added_brand">
+    <% @all_brands.each do |brand| %>
+      <option value="<%= brand.id %>"><%= brand.name %></option>
+    <% end %>
+  </select>
+  <br>
+  <button type="submit" class="btn btn-primary">Add brand to this store</button>
+</form>
+<% else %>
+  <p>Add brands to the system to see the form.</p>
+  <p><a href="/brands">Add/Manage Brands</a></p>
+<% end %>
+
+<br>
+
+<form action="/store/<%= @current_store.id %>/update_name" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="new_name">Edit <%= @current_store.name %>'s name</label>
+  <input type="text" name="new_name" id="new_name" class="form-control">
+  <br>
+  <button type="submit" class="btn btn-warning">Update Store</button>
+</form>
+
+<br>
+
+<form action="/store/<%= @current_store.id %>/delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit" class="btn btn-danger">Delete Store</button>
+</form>
+
+<p><a href="/">Home</a></p>
+<p><a href="/stores">Back to Stores</a></p>
