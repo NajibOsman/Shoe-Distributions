@@ -1,1 +1,25 @@
 <h1> Here are the stores for your brand</h1>
+
+<h2>Stores Management</h2>
+
+<% if @all_stores.any? %>
+<ul>
+  <% @all_stores.each do |store| %>
+    <li><a href="/stores/store/<%= store.id %>"><%= store.name %></a></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>You have no stores.</p>
+<% end %>
+
+<br>
+
+<h4>New Store Entry Form:</h4>
+<form action="/stores/create_new_store" method="post">
+<label for="name_input">Name</label>
+<input type="text" name="name_input" id="name_input" class="form-control">
+<br>
+<button type="submit" class="btn btn-primary">Add store</button>
+</form>
+
+<p><a href="/">Home</a></p>
