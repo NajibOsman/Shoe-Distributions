@@ -14,16 +14,16 @@ get('/stores') do
   @all_stores = Store.all()
   erb(:stores)
 end
-
-# post('/stores/create_new_store') do
-#   name_input = params[:name_input]
-#   @new_store = Store.create({:name => name_input})
-#   if @new_store.save
-#     redirect('/stores')
-#   else
-#     erb(:error)
-#   end
-# end
+#posting anew store to database
+post('/stores/create_new_store') do
+  name_input = params[:name_input]
+  @new_store = Store.create({:name => name_input})
+  if @new_store.save
+    redirect('/stores')
+  else
+    erb(:error)
+  end
+end
 
 # get('/stores/store/:id') do
 #   @current_store = Store.find(params[:id])
