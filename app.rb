@@ -25,48 +25,52 @@ post('/stores/create_new_store') do
   end
 end
 
-# get('/stores/store/:id') do
-#   @current_store = Store.find(params[:id])
-#   @current_store_brands = @current_store.brands
-#   @all_brands = Brand.all
-#   erb(:store)
-# end
+# returns the current store in the database
+get('/stores/store/:id') do
+  @current_store = Store.find(params[:id])
+  @current_store_brands = @current_store.brands
+  @all_brands = Brand.all
+  erb(:store)
+end
 
-# patch('/store/:id/add_brand') do
-#   @current_store = Store.find(params[:id])
-#   @added_brand = Brand.find(params[:added_brand])
-#   if @current_store.brand_unique_per_store(@added_brand)
-#     @current_store.brands.push(@added_brand)
-#     redirect("/stores/store/#{@current_store.id}")
-#   else
-#     erb(:error)
-#   end
-# end
+#patching and add brand
+patch('/store/:id/add_brand') do
+  @current_store = Store.find(params[:id])
+  @added_brand = Brand.find(params[:added_brand])
+  if @current_store.brand_unique_per_store(@added_brand)
+    @current_store.brands.push(@added_brand)
+    redirect("/stores/store/#{@current_store.id}")
+  else
+    erb(:error)
+  end
+end
 
-# patch('/store/:id/update_name') do
-#   @current_store = Store.find(params[:id])
-#   new_name = params[:new_name]
-#   if @current_store.update({:name => new_name})
-#     redirect("/stores/store/#{@current_store.id}")
-#   else
-#     erb(:error)
-#   end
-# end
+#patching and updating anew store
+patch('/store/:id/update_name') do
+  @current_store = Store.find(params[:id])
+  new_name = params[:new_name]
+  if @current_store.update({:name => new_name})
+    redirect("/stores/store/#{@current_store.id}")
+  else
+    erb(:error)
+  end
+end
 
-# get('/brands') do
-#   @all_brands = Brand.all()
-#   erb(:brands)
-# end
-
-# post('/brands/create_new_brand') do
-#   name_input = params[:name_input]
-#   @new_brand = Brand.create({:name => name_input})
-#   if @new_brand.save
-#     redirect('/brands')
-#   else
-#     erb(:error)
-#   end
-# end
+#returns  all brands in DB
+get('/brands') do
+  @all_brands = Brand.all()
+  erb(:brands)
+end
+# Posting anew brand to the DB and return error
+post('/brands/create_new_brand') do
+  name_input = params[:name_input]
+  @new_brand = Brand.create({:name => name_input})
+  if @new_brand.save
+    redirect('/brands')
+  else
+    erb(:error)
+  end
+end
 
 # get('/brands/brand/:id') do
 #   @current_brand = Brand.find(params[:id])
