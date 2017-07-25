@@ -1,3 +1,12 @@
 body{
-	background-image: url(/images/shoebg.jpg);
+
+	background-image: url(../images/shoebg.jpg);
+	background-repeat: no-repeat;
+	background-size: medium;
+	background-position: center;
+}
+.brand {
+	background-image: url(../images/shoebg2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
 }
