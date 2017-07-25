@@ -1,8 +1,8 @@
 development:
   adapter: postgresql
   database: shoe_distributions
-  host: localhost
-
+  # host: localhost
+  
 test:
   adapter: postgresql
   database:  shoe_distributions_test
